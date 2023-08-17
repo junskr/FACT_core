@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>conftest &mdash; FACT  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="test" href="test.html" />
+    <link rel="prev" title="config" href="config.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            FACT
+              <img src="../_static/FACT_smaller.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../main.html">Challenges</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../main.html#easy-to-install-easy-to-use">Easy to Install! Easy to Use!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../main.html#easy-to-extend-easy-to-integrate">Easy to Extend! Easy to Integrate!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../main.html#screenshots">Screenshots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../main.html#contributing">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../main.html#latest-news-and-contact">Latest News and Contact</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../main.html#authors-and-acknowledgment">Authors and Acknowledgment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../main.html#source-code">Source Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../migration.html">Upgrading FACT from 3 to 4</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modules:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="analysis.html">analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="config.html">config</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">conftest</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#conftest.AnalysisPluginTestConfig"><code class="docutils literal notranslate"><span class="pre">AnalysisPluginTestConfig</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#conftest.AnalysisPluginTestConfig.Config"><code class="docutils literal notranslate"><span class="pre">AnalysisPluginTestConfig.Config</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#conftest.AnalysisPluginTestConfig.Config.arbitrary_types_allowed"><code class="docutils literal notranslate"><span class="pre">AnalysisPluginTestConfig.Config.arbitrary_types_allowed</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#conftest.AnalysisPluginTestConfig.init_kwargs"><code class="docutils literal notranslate"><span class="pre">AnalysisPluginTestConfig.init_kwargs</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#conftest.AnalysisPluginTestConfig.plugin_class"><code class="docutils literal notranslate"><span class="pre">AnalysisPluginTestConfig.plugin_class</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#conftest.AnalysisPluginTestConfig.start_processes"><code class="docutils literal notranslate"><span class="pre">AnalysisPluginTestConfig.start_processes</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#conftest.analysis_plugin"><code class="docutils literal notranslate"><span class="pre">analysis_plugin()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#conftest.backend_config"><code class="docutils literal notranslate"><span class="pre">backend_config()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#conftest.common_config"><code class="docutils literal notranslate"><span class="pre">common_config()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#conftest.docker_mount_base_dir"><code class="docutils literal notranslate"><span class="pre">docker_mount_base_dir()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#conftest.frontend_config"><code class="docutils literal notranslate"><span class="pre">frontend_config()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#conftest.patch_config"><code class="docutils literal notranslate"><span class="pre">patch_config()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="test.html">test</a></li>
+<li class="toctree-l1"><a class="reference internal" href="helperFunctions.html">helperFunctions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="objects.html">objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plugins.html">plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scheduler.html">scheduler</a></li>
+<li class="toctree-l1"><a class="reference internal" href="web_interface.html">web_interface</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">FACT</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">conftest</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/modules/conftest.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-conftest">
+<span id="conftest"></span><h1>conftest<a class="headerlink" href="#module-conftest" title="Permalink to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="conftest.AnalysisPluginTestConfig">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">conftest.</span></span><span class="sig-name descname"><span class="pre">AnalysisPluginTestConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#conftest.AnalysisPluginTestConfig" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></p>
+<p>A class configuring the <a class="reference internal" href="#conftest.analysis_plugin" title="conftest.analysis_plugin"><code class="xref py py-func docutils literal notranslate"><span class="pre">analysis_plugin()</span></code></a> fixture.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>args</strong> (<em>Any</em>) – </p></li>
+<li><p><strong>kwargs</strong> (<em>Any</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Any</p>
+</dd>
+</dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="conftest.AnalysisPluginTestConfig.Config">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Config</span></span><a class="headerlink" href="#conftest.AnalysisPluginTestConfig.Config" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="conftest.AnalysisPluginTestConfig.Config.arbitrary_types_allowed">
+<span class="sig-name descname"><span class="pre">arbitrary_types_allowed</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#conftest.AnalysisPluginTestConfig.Config.arbitrary_types_allowed" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="conftest.AnalysisPluginTestConfig.init_kwargs">
+<span class="sig-name descname"><span class="pre">init_kwargs</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">dict</span></em><a class="headerlink" href="#conftest.AnalysisPluginTestConfig.init_kwargs" title="Permalink to this definition"></a></dt>
+<dd><p>Keyword arguments to be given to the <code class="docutils literal notranslate"><span class="pre">plugin_class</span></code> constructor.
+Not supported for AnalysisPluginV0</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="conftest.AnalysisPluginTestConfig.plugin_class">
+<span class="sig-name descname"><span class="pre">plugin_class</span></span><a class="headerlink" href="#conftest.AnalysisPluginTestConfig.plugin_class" title="Permalink to this definition"></a></dt>
+<dd><p>The class of the plugin to be tested. It will most probably be called <code class="docutils literal notranslate"><span class="pre">AnalysisPlugin</span></code>.</p>
+<p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">AnalysisBasePlugin</span></code></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="conftest.AnalysisPluginTestConfig.start_processes">
+<span class="sig-name descname"><span class="pre">start_processes</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#conftest.AnalysisPluginTestConfig.start_processes" title="Permalink to this definition"></a></dt>
+<dd><p>Whether or not to start the workers (see <code class="docutils literal notranslate"><span class="pre">AnalysisPlugin.start</span></code>).
+Not supported for AnalysisPluginV0</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="conftest.analysis_plugin">
+<span class="sig-prename descclassname"><span class="pre">conftest.</span></span><span class="sig-name descname"><span class="pre">analysis_plugin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">patch_config</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#conftest.analysis_plugin" title="Permalink to this definition"></a></dt>
+<dd><p>Returns an instance of an AnalysisPlugin.
+This fixture can be configured by the supplying an instance of <code class="docutils literal notranslate"><span class="pre">AnalysisPluginTestConfig</span></code> as marker of the same
+name.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>The documentation of <a class="reference internal" href="#conftest.AnalysisPluginTestConfig" title="conftest.AnalysisPluginTestConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnalysisPluginTestConfig</span></code></a></p>
+</div>
+<p>If this fixture does not fit your needs (which normally should not be necessary) you can define a fixture like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
+<span class="k">def</span> <span class="nf">my_fancy_plugin</span><span class="p">(</span><span class="n">analysis_plugin</span><span class="p">)</span>
+    <span class="c1"># Make sure the marker is defined as expected</span>
+    <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">analysis_plugin</span><span class="p">,</span> <span class="n">MyFancyPlugin</span><span class="p">)</span>
+    <span class="c1"># Patch custom things</span>
+    <span class="n">analysis_plugin</span><span class="o">.</span><span class="n">db_interface</span> <span class="o">=</span> <span class="n">CustomDbMock</span><span class="p">()</span>
+    <span class="c1"># Return the plugin instance</span>
+    <span class="k">yield</span> <span class="n">analysis_plugin</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you want to set <code class="docutils literal notranslate"><span class="pre">AnalysisPluginTestConfig.start_processes</span> <span class="pre">=</span> <span class="pre">True</span></code> and want to modify plugin configuration
+like for example TIMEOUT you have to put the following in your test:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">AnalysisPluginTestConfig</span><span class="p">(</span>
+    <span class="n">plugin_class</span><span class="o">=</span><span class="n">MyFancyPlugin</span><span class="p">,</span>
+    <span class="c1"># Actually don&#39;t start the processes in the fixture</span>
+    <span class="n">start_processes</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="k">def</span> <span class="nf">my_fancy_test</span><span class="p">(</span><span class="n">analysis_plugin</span><span class="p">,</span> <span class="n">monkeypatch</span><span class="p">):</span>
+    <span class="n">analysis_plugin</span><span class="o">.</span><span class="n">TIMEOUT</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="c1"># Now start the worker</span>
+    <span class="n">analysis_plugin</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="conftest.backend_config">
+<span class="sig-prename descclassname"><span class="pre">conftest.</span></span><span class="sig-name descname"><span class="pre">backend_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">common_config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_firmware_file_storage_directory</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#conftest.backend_config" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="config.html#config.Backend" title="config.Backend"><em>Backend</em></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="conftest.common_config">
+<span class="sig-prename descclassname"><span class="pre">conftest.</span></span><span class="sig-name descname"><span class="pre">common_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">docker_mount_base_dir</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#conftest.common_config" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="config.html#config.Common" title="config.Common"><em>Common</em></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="conftest.docker_mount_base_dir">
+<span class="sig-prename descclassname"><span class="pre">conftest.</span></span><span class="sig-name descname"><span class="pre">docker_mount_base_dir</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#conftest.docker_mount_base_dir" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="conftest.frontend_config">
+<span class="sig-prename descclassname"><span class="pre">conftest.</span></span><span class="sig-name descname"><span class="pre">frontend_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">common_config</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#conftest.frontend_config" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="config.html#config.Frontend" title="config.Frontend"><em>Frontend</em></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="conftest.patch_config">
+<span class="sig-prename descclassname"><span class="pre">conftest.</span></span><span class="sig-name descname"><span class="pre">patch_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">monkeypatch</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">common_config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">backend_config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frontend_config</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#conftest.patch_config" title="Permalink to this definition"></a></dt>
+<dd><p>This fixture will replace :py:data`config.common`, <a class="reference internal" href="config.html#config.backend" title="config.backend"><code class="xref py py-data docutils literal notranslate"><span class="pre">config.backend</span></code></a> and <a class="reference internal" href="config.html#config.frontend" title="config.frontend"><code class="xref py py-data docutils literal notranslate"><span class="pre">config.frontend</span></code></a>
+with the default test config.</p>
+<p>Defaults in the test config can be overwritten with the markers <code class="docutils literal notranslate"><span class="pre">backend_config_overwrite</span></code>,
+<code class="docutils literal notranslate"><span class="pre">frontend_config_overwrite</span></code> and <code class="docutils literal notranslate"><span class="pre">common_config_overwrite</span></code>.
+These three markers accept a single argument of the type <code class="docutils literal notranslate"><span class="pre">dict</span></code>.
+When using <code class="docutils literal notranslate"><span class="pre">backend_config_overwrite</span></code> the dictionary has to contain valid keyword arguments for
+<code class="xref py py-class docutils literal notranslate"><span class="pre">Backend</span></code>.</p>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="config.html" class="btn btn-neutral float-left" title="config" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="test.html" class="btn btn-neutral float-right" title="test" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020-2023  Fraunhofer FKIE.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

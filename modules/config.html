@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>config &mdash; FACT  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="conftest" href="conftest.html" />
+    <link rel="prev" title="analysis.plugin.plugin" href="analysis.plugin.plugin.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            FACT
+              <img src="../_static/FACT_smaller.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../main.html">Challenges</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../main.html#easy-to-install-easy-to-use">Easy to Install! Easy to Use!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../main.html#easy-to-extend-easy-to-integrate">Easy to Extend! Easy to Integrate!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../main.html#screenshots">Screenshots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../main.html#contributing">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../main.html#latest-news-and-contact">Latest News and Contact</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../main.html#authors-and-acknowledgment">Authors and Acknowledgment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../main.html#source-code">Source Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../migration.html">Upgrading FACT from 3 to 4</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modules:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="analysis.html">analysis</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">config</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#config.Backend"><code class="docutils literal notranslate"><span class="pre">Backend</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#config.Backend.Config"><code class="docutils literal notranslate"><span class="pre">Backend.Config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#config.Backend.Plugin"><code class="docutils literal notranslate"><span class="pre">Backend.Plugin</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#config.Backend.Plugin.Config"><code class="docutils literal notranslate"><span class="pre">Backend.Plugin.Config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#config.Backend.Plugin.name"><code class="docutils literal notranslate"><span class="pre">Backend.Plugin.name</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#config.Backend.PluginDefaults"><code class="docutils literal notranslate"><span class="pre">Backend.PluginDefaults</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#config.Backend.PluginDefaults.processes"><code class="docutils literal notranslate"><span class="pre">Backend.PluginDefaults.processes</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#config.Backend.Unpacking"><code class="docutils literal notranslate"><span class="pre">Backend.Unpacking</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#config.Backend.Unpacking.base_port"><code class="docutils literal notranslate"><span class="pre">Backend.Unpacking.base_port</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#config.Backend.Unpacking.delay"><code class="docutils literal notranslate"><span class="pre">Backend.Unpacking.delay</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#config.Backend.Unpacking.max_depth"><code class="docutils literal notranslate"><span class="pre">Backend.Unpacking.max_depth</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#config.Backend.Unpacking.memory_limit"><code class="docutils literal notranslate"><span class="pre">Backend.Unpacking.memory_limit</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#config.Backend.Unpacking.processes"><code class="docutils literal notranslate"><span class="pre">Backend.Unpacking.processes</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#config.Backend.Unpacking.throttle_limit"><code class="docutils literal notranslate"><span class="pre">Backend.Unpacking.throttle_limit</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#config.Backend.Unpacking.whitelist"><code class="docutils literal notranslate"><span class="pre">Backend.Unpacking.whitelist</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#config.Backend.block_delay"><code class="docutils literal notranslate"><span class="pre">Backend.block_delay</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#config.Backend.collector_worker_count"><code class="docutils literal notranslate"><span class="pre">Backend.collector_worker_count</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#config.Backend.firmware_file_storage_directory"><code class="docutils literal notranslate"><span class="pre">Backend.firmware_file_storage_directory</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#config.Backend.intercom_poll_delay"><code class="docutils literal notranslate"><span class="pre">Backend.intercom_poll_delay</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#config.Backend.plugin"><code class="docutils literal notranslate"><span class="pre">Backend.plugin</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#config.Backend.plugin_defaults"><code class="docutils literal notranslate"><span class="pre">Backend.plugin_defaults</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#config.Backend.scheduling_worker_count"><code class="docutils literal notranslate"><span class="pre">Backend.scheduling_worker_count</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#config.Backend.ssdeep_ignore"><code class="docutils literal notranslate"><span class="pre">Backend.ssdeep_ignore</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#config.Backend.throw_exceptions"><code class="docutils literal notranslate"><span class="pre">Backend.throw_exceptions</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#config.Backend.unpacking"><code class="docutils literal notranslate"><span class="pre">Backend.unpacking</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#config.Common"><code class="docutils literal notranslate"><span class="pre">Common</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#config.Common.AnalysisPreset"><code class="docutils literal notranslate"><span class="pre">Common.AnalysisPreset</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#config.Common.AnalysisPreset.Config"><code class="docutils literal notranslate"><span class="pre">Common.AnalysisPreset.Config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#config.Common.AnalysisPreset.name"><code class="docutils literal notranslate"><span class="pre">Common.AnalysisPreset.name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#config.Common.AnalysisPreset.plugins"><code class="docutils literal notranslate"><span class="pre">Common.AnalysisPreset.plugins</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#config.Common.Logging"><code class="docutils literal notranslate"><span class="pre">Common.Logging</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#config.Common.Logging.Config"><code class="docutils literal notranslate"><span class="pre">Common.Logging.Config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#config.Common.Logging.file_backend"><code class="docutils literal notranslate"><span class="pre">Common.Logging.file_backend</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#config.Common.Logging.file_database"><code class="docutils literal notranslate"><span class="pre">Common.Logging.file_database</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#config.Common.Logging.file_frontend"><code class="docutils literal notranslate"><span class="pre">Common.Logging.file_frontend</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#config.Common.Logging.level"><code class="docutils literal notranslate"><span class="pre">Common.Logging.level</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#config.Common.Postgres"><code class="docutils literal notranslate"><span class="pre">Common.Postgres</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#config.Common.Postgres.Config"><code class="docutils literal notranslate"><span class="pre">Common.Postgres.Config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#config.Common.Postgres.admin_pw"><code class="docutils literal notranslate"><span class="pre">Common.Postgres.admin_pw</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#config.Common.Postgres.admin_user"><code class="docutils literal notranslate"><span class="pre">Common.Postgres.admin_user</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#config.Common.Postgres.database"><code class="docutils literal notranslate"><span class="pre">Common.Postgres.database</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#config.Common.Postgres.del_pw"><code class="docutils literal notranslate"><span class="pre">Common.Postgres.del_pw</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#config.Common.Postgres.del_user"><code class="docutils literal notranslate"><span class="pre">Common.Postgres.del_user</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#config.Common.Postgres.port"><code class="docutils literal notranslate"><span class="pre">Common.Postgres.port</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#config.Common.Postgres.ro_pw"><code class="docutils literal notranslate"><span class="pre">Common.Postgres.ro_pw</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#config.Common.Postgres.ro_user"><code class="docutils literal notranslate"><span class="pre">Common.Postgres.ro_user</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#config.Common.Postgres.rw_pw"><code class="docutils literal notranslate"><span class="pre">Common.Postgres.rw_pw</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#config.Common.Postgres.rw_user"><code class="docutils literal notranslate"><span class="pre">Common.Postgres.rw_user</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#config.Common.Postgres.server"><code class="docutils literal notranslate"><span class="pre">Common.Postgres.server</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#config.Common.Postgres.test_database"><code class="docutils literal notranslate"><span class="pre">Common.Postgres.test_database</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#config.Common.Redis"><code class="docutils literal notranslate"><span class="pre">Common.Redis</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#config.Common.Redis.Config"><code class="docutils literal notranslate"><span class="pre">Common.Redis.Config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#config.Common.Redis.fact_db"><code class="docutils literal notranslate"><span class="pre">Common.Redis.fact_db</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#config.Common.Redis.host"><code class="docutils literal notranslate"><span class="pre">Common.Redis.host</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#config.Common.Redis.password"><code class="docutils literal notranslate"><span class="pre">Common.Redis.password</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#config.Common.Redis.port"><code class="docutils literal notranslate"><span class="pre">Common.Redis.port</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#config.Common.Redis.test_db"><code class="docutils literal notranslate"><span class="pre">Common.Redis.test_db</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#config.Common.analysis_preset"><code class="docutils literal notranslate"><span class="pre">Common.analysis_preset</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#config.Common.docker_mount_base_dir"><code class="docutils literal notranslate"><span class="pre">Common.docker_mount_base_dir</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#config.Common.logging"><code class="docutils literal notranslate"><span class="pre">Common.logging</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#config.Common.postgres"><code class="docutils literal notranslate"><span class="pre">Common.postgres</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#config.Common.redis"><code class="docutils literal notranslate"><span class="pre">Common.redis</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#config.Common.temp_dir_path"><code class="docutils literal notranslate"><span class="pre">Common.temp_dir_path</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#config.Frontend"><code class="docutils literal notranslate"><span class="pre">Frontend</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#config.Frontend.Authentication"><code class="docutils literal notranslate"><span class="pre">Frontend.Authentication</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#config.Frontend.Authentication.Config"><code class="docutils literal notranslate"><span class="pre">Frontend.Authentication.Config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#config.Frontend.Authentication.enabled"><code class="docutils literal notranslate"><span class="pre">Frontend.Authentication.enabled</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#config.Frontend.Authentication.password_salt"><code class="docutils literal notranslate"><span class="pre">Frontend.Authentication.password_salt</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#config.Frontend.Authentication.user_database"><code class="docutils literal notranslate"><span class="pre">Frontend.Authentication.user_database</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#config.Frontend.Config"><code class="docutils literal notranslate"><span class="pre">Frontend.Config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#config.Frontend.ajax_stats_reload_time"><code class="docutils literal notranslate"><span class="pre">Frontend.ajax_stats_reload_time</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#config.Frontend.authentication"><code class="docutils literal notranslate"><span class="pre">Frontend.authentication</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#config.Frontend.communication_timeout"><code class="docutils literal notranslate"><span class="pre">Frontend.communication_timeout</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#config.Frontend.max_elements_per_chart"><code class="docutils literal notranslate"><span class="pre">Frontend.max_elements_per_chart</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#config.Frontend.number_of_latest_firmwares_to_display"><code class="docutils literal notranslate"><span class="pre">Frontend.number_of_latest_firmwares_to_display</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#config.Frontend.radare2_url"><code class="docutils literal notranslate"><span class="pre">Frontend.radare2_url</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#config.Frontend.results_per_page"><code class="docutils literal notranslate"><span class="pre">Frontend.results_per_page</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#config.backend"><code class="docutils literal notranslate"><span class="pre">backend()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#config.common"><code class="docutils literal notranslate"><span class="pre">common()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#config.frontend"><code class="docutils literal notranslate"><span class="pre">frontend()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#config.load"><code class="docutils literal notranslate"><span class="pre">load()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="conftest.html">conftest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="test.html">test</a></li>
+<li class="toctree-l1"><a class="reference internal" href="helperFunctions.html">helperFunctions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="objects.html">objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plugins.html">plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scheduler.html">scheduler</a></li>
+<li class="toctree-l1"><a class="reference internal" href="web_interface.html">web_interface</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">FACT</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">config</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/modules/config.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-config">
+<span id="config"></span><h1>config<a class="headerlink" href="#module-config" title="Permalink to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="config.Backend">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">config.</span></span><span class="sig-name descname"><span class="pre">Backend</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#config.Backend" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#config.Common" title="config.Common"><code class="xref py py-class docutils literal notranslate"><span class="pre">Common</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>args</strong> (<em>Any</em>) – </p></li>
+<li><p><strong>kwargs</strong> (<em>Any</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Any</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.Backend.Config">
+<span class="sig-name descname"><span class="pre">Config</span></span><a class="headerlink" href="#config.Backend.Config" title="Permalink to this definition"></a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">_PydanticConfigExtraForbid</span></code></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="config.Backend.Plugin">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Plugin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#config.Backend.Plugin" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>args</strong> (<em>Any</em>) – </p></li>
+<li><p><strong>kwargs</strong> (<em>Any</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Any</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.Backend.Plugin.Config">
+<span class="sig-name descname"><span class="pre">Config</span></span><a class="headerlink" href="#config.Backend.Plugin.Config" title="Permalink to this definition"></a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">_PydanticConfigExtraAllow</span></code></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.Backend.Plugin.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#config.Backend.Plugin.name" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="config.Backend.PluginDefaults">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">PluginDefaults</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#config.Backend.PluginDefaults" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>args</strong> (<em>Any</em>) – </p></li>
+<li><p><strong>kwargs</strong> (<em>Any</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Any</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.Backend.PluginDefaults.processes">
+<span class="sig-name descname"><span class="pre">processes</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#config.Backend.PluginDefaults.processes" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="config.Backend.Unpacking">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Unpacking</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#config.Backend.Unpacking" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>args</strong> (<em>Any</em>) – </p></li>
+<li><p><strong>kwargs</strong> (<em>Any</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Any</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.Backend.Unpacking.base_port">
+<span class="sig-name descname"><span class="pre">base_port</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#config.Backend.Unpacking.base_port" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.Backend.Unpacking.delay">
+<span class="sig-name descname"><span class="pre">delay</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#config.Backend.Unpacking.delay" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.Backend.Unpacking.max_depth">
+<span class="sig-name descname"><span class="pre">max_depth</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#config.Backend.Unpacking.max_depth" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.Backend.Unpacking.memory_limit">
+<span class="sig-name descname"><span class="pre">memory_limit</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2048</span></em><a class="headerlink" href="#config.Backend.Unpacking.memory_limit" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.Backend.Unpacking.processes">
+<span class="sig-name descname"><span class="pre">processes</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#config.Backend.Unpacking.processes" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.Backend.Unpacking.throttle_limit">
+<span class="sig-name descname"><span class="pre">throttle_limit</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#config.Backend.Unpacking.throttle_limit" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.Backend.Unpacking.whitelist">
+<span class="sig-name descname"><span class="pre">whitelist</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span></em><a class="headerlink" href="#config.Backend.Unpacking.whitelist" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.Backend.block_delay">
+<span class="sig-name descname"><span class="pre">block_delay</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#config.Backend.block_delay" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.Backend.collector_worker_count">
+<span class="sig-name descname"><span class="pre">collector_worker_count</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></em><a class="headerlink" href="#config.Backend.collector_worker_count" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.Backend.firmware_file_storage_directory">
+<span class="sig-name descname"><span class="pre">firmware_file_storage_directory</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#config.Backend.firmware_file_storage_directory" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.Backend.intercom_poll_delay">
+<span class="sig-name descname"><span class="pre">intercom_poll_delay</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#config.Backend.intercom_poll_delay" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.Backend.plugin">
+<span class="sig-name descname"><span class="pre">plugin</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#config.Backend.Plugin" title="config.Backend.Plugin"><span class="pre">Backend.Plugin</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#config.Backend.plugin" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.Backend.plugin_defaults">
+<span class="sig-name descname"><span class="pre">plugin_defaults</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#config.Backend.PluginDefaults" title="config.Backend.PluginDefaults"><span class="pre">Backend.PluginDefaults</span></a></em><a class="headerlink" href="#config.Backend.plugin_defaults" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.Backend.scheduling_worker_count">
+<span class="sig-name descname"><span class="pre">scheduling_worker_count</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">4</span></em><a class="headerlink" href="#config.Backend.scheduling_worker_count" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.Backend.ssdeep_ignore">
+<span class="sig-name descname"><span class="pre">ssdeep_ignore</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#config.Backend.ssdeep_ignore" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.Backend.throw_exceptions">
+<span class="sig-name descname"><span class="pre">throw_exceptions</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#config.Backend.throw_exceptions" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.Backend.unpacking">
+<span class="sig-name descname"><span class="pre">unpacking</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#config.Backend.Unpacking" title="config.Backend.Unpacking"><span class="pre">Backend.Unpacking</span></a></em><a class="headerlink" href="#config.Backend.unpacking" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="config.Common">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">config.</span></span><span class="sig-name descname"><span class="pre">Common</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#config.Common" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>args</strong> (<em>Any</em>) – </p></li>
+<li><p><strong>kwargs</strong> (<em>Any</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Any</p>
+</dd>
+</dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="config.Common.AnalysisPreset">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">AnalysisPreset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#config.Common.AnalysisPreset" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>args</strong> (<em>Any</em>) – </p></li>
+<li><p><strong>kwargs</strong> (<em>Any</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Any</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.Common.AnalysisPreset.Config">
+<span class="sig-name descname"><span class="pre">Config</span></span><a class="headerlink" href="#config.Common.AnalysisPreset.Config" title="Permalink to this definition"></a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">_PydanticConfigExtraForbid</span></code></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.Common.AnalysisPreset.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#config.Common.AnalysisPreset.name" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.Common.AnalysisPreset.plugins">
+<span class="sig-name descname"><span class="pre">plugins</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#config.Common.AnalysisPreset.plugins" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="config.Common.Logging">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Logging</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#config.Common.Logging" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>args</strong> (<em>Any</em>) – </p></li>
+<li><p><strong>kwargs</strong> (<em>Any</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Any</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.Common.Logging.Config">
+<span class="sig-name descname"><span class="pre">Config</span></span><a class="headerlink" href="#config.Common.Logging.Config" title="Permalink to this definition"></a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">_PydanticConfigExtraForbid</span></code></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.Common.Logging.file_backend">
+<span class="sig-name descname"><span class="pre">file_backend</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'/tmp/fact_backend.log'</span></em><a class="headerlink" href="#config.Common.Logging.file_backend" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.Common.Logging.file_database">
+<span class="sig-name descname"><span class="pre">file_database</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'/tmp/fact_database.log'</span></em><a class="headerlink" href="#config.Common.Logging.file_database" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.Common.Logging.file_frontend">
+<span class="sig-name descname"><span class="pre">file_frontend</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'/tmp/fact_frontend.log'</span></em><a class="headerlink" href="#config.Common.Logging.file_frontend" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.Common.Logging.level">
+<span class="sig-name descname"><span class="pre">level</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'WARNING'</span></em><a class="headerlink" href="#config.Common.Logging.level" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="config.Common.Postgres">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Postgres</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#config.Common.Postgres" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>args</strong> (<em>Any</em>) – </p></li>
+<li><p><strong>kwargs</strong> (<em>Any</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Any</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.Common.Postgres.Config">
+<span class="sig-name descname"><span class="pre">Config</span></span><a class="headerlink" href="#config.Common.Postgres.Config" title="Permalink to this definition"></a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">_PydanticConfigExtraForbid</span></code></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.Common.Postgres.admin_pw">
+<span class="sig-name descname"><span class="pre">admin_pw</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#config.Common.Postgres.admin_pw" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.Common.Postgres.admin_user">
+<span class="sig-name descname"><span class="pre">admin_user</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#config.Common.Postgres.admin_user" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.Common.Postgres.database">
+<span class="sig-name descname"><span class="pre">database</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#config.Common.Postgres.database" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.Common.Postgres.del_pw">
+<span class="sig-name descname"><span class="pre">del_pw</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#config.Common.Postgres.del_pw" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.Common.Postgres.del_user">
+<span class="sig-name descname"><span class="pre">del_user</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#config.Common.Postgres.del_user" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.Common.Postgres.port">
+<span class="sig-name descname"><span class="pre">port</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#config.Common.Postgres.port" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.Common.Postgres.ro_pw">
+<span class="sig-name descname"><span class="pre">ro_pw</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#config.Common.Postgres.ro_pw" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.Common.Postgres.ro_user">
+<span class="sig-name descname"><span class="pre">ro_user</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#config.Common.Postgres.ro_user" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.Common.Postgres.rw_pw">
+<span class="sig-name descname"><span class="pre">rw_pw</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#config.Common.Postgres.rw_pw" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.Common.Postgres.rw_user">
+<span class="sig-name descname"><span class="pre">rw_user</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#config.Common.Postgres.rw_user" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.Common.Postgres.server">
+<span class="sig-name descname"><span class="pre">server</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#config.Common.Postgres.server" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.Common.Postgres.test_database">
+<span class="sig-name descname"><span class="pre">test_database</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#config.Common.Postgres.test_database" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="config.Common.Redis">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Redis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#config.Common.Redis" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>args</strong> (<em>Any</em>) – </p></li>
+<li><p><strong>kwargs</strong> (<em>Any</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Any</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.Common.Redis.Config">
+<span class="sig-name descname"><span class="pre">Config</span></span><a class="headerlink" href="#config.Common.Redis.Config" title="Permalink to this definition"></a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">_PydanticConfigExtraForbid</span></code></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.Common.Redis.fact_db">
+<span class="sig-name descname"><span class="pre">fact_db</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#config.Common.Redis.fact_db" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.Common.Redis.host">
+<span class="sig-name descname"><span class="pre">host</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#config.Common.Redis.host" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.Common.Redis.password">
+<span class="sig-name descname"><span class="pre">password</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#config.Common.Redis.password" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.Common.Redis.port">
+<span class="sig-name descname"><span class="pre">port</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#config.Common.Redis.port" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.Common.Redis.test_db">
+<span class="sig-name descname"><span class="pre">test_db</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#config.Common.Redis.test_db" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.Common.analysis_preset">
+<span class="sig-name descname"><span class="pre">analysis_preset</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#config.Common.AnalysisPreset" title="config.Common.AnalysisPreset"><span class="pre">Common.AnalysisPreset</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#config.Common.analysis_preset" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.Common.docker_mount_base_dir">
+<span class="sig-name descname"><span class="pre">docker_mount_base_dir</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#config.Common.docker_mount_base_dir" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.Common.logging">
+<span class="sig-name descname"><span class="pre">logging</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#config.Common.Logging" title="config.Common.Logging"><span class="pre">Common.Logging</span></a></em><a class="headerlink" href="#config.Common.logging" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.Common.postgres">
+<span class="sig-name descname"><span class="pre">postgres</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#config.Common.Postgres" title="config.Common.Postgres"><span class="pre">Common.Postgres</span></a></em><a class="headerlink" href="#config.Common.postgres" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.Common.redis">
+<span class="sig-name descname"><span class="pre">redis</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#config.Common.Redis" title="config.Common.Redis"><span class="pre">Common.Redis</span></a></em><a class="headerlink" href="#config.Common.redis" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.Common.temp_dir_path">
+<span class="sig-name descname"><span class="pre">temp_dir_path</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'/tmp'</span></em><a class="headerlink" href="#config.Common.temp_dir_path" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="config.Frontend">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">config.</span></span><span class="sig-name descname"><span class="pre">Frontend</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#config.Frontend" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#config.Common" title="config.Common"><code class="xref py py-class docutils literal notranslate"><span class="pre">Common</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>args</strong> (<em>Any</em>) – </p></li>
+<li><p><strong>kwargs</strong> (<em>Any</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Any</p>
+</dd>
+</dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="config.Frontend.Authentication">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Authentication</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#config.Frontend.Authentication" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>args</strong> (<em>Any</em>) – </p></li>
+<li><p><strong>kwargs</strong> (<em>Any</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Any</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.Frontend.Authentication.Config">
+<span class="sig-name descname"><span class="pre">Config</span></span><a class="headerlink" href="#config.Frontend.Authentication.Config" title="Permalink to this definition"></a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">_PydanticConfigExtraForbid</span></code></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.Frontend.Authentication.enabled">
+<span class="sig-name descname"><span class="pre">enabled</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#config.Frontend.Authentication.enabled" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.Frontend.Authentication.password_salt">
+<span class="sig-name descname"><span class="pre">password_salt</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#config.Frontend.Authentication.password_salt" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.Frontend.Authentication.user_database">
+<span class="sig-name descname"><span class="pre">user_database</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#config.Frontend.Authentication.user_database" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.Frontend.Config">
+<span class="sig-name descname"><span class="pre">Config</span></span><a class="headerlink" href="#config.Frontend.Config" title="Permalink to this definition"></a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">_PydanticConfigExtraForbid</span></code></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.Frontend.ajax_stats_reload_time">
+<span class="sig-name descname"><span class="pre">ajax_stats_reload_time</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#config.Frontend.ajax_stats_reload_time" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.Frontend.authentication">
+<span class="sig-name descname"><span class="pre">authentication</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#config.Frontend.Authentication" title="config.Frontend.Authentication"><span class="pre">Frontend.Authentication</span></a></em><a class="headerlink" href="#config.Frontend.authentication" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.Frontend.communication_timeout">
+<span class="sig-name descname"><span class="pre">communication_timeout</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">60</span></em><a class="headerlink" href="#config.Frontend.communication_timeout" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.Frontend.max_elements_per_chart">
+<span class="sig-name descname"><span class="pre">max_elements_per_chart</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">10</span></em><a class="headerlink" href="#config.Frontend.max_elements_per_chart" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.Frontend.number_of_latest_firmwares_to_display">
+<span class="sig-name descname"><span class="pre">number_of_latest_firmwares_to_display</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">10</span></em><a class="headerlink" href="#config.Frontend.number_of_latest_firmwares_to_display" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.Frontend.radare2_url">
+<span class="sig-name descname"><span class="pre">radare2_url</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#config.Frontend.radare2_url" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.Frontend.results_per_page">
+<span class="sig-name descname"><span class="pre">results_per_page</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#config.Frontend.results_per_page" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="config.backend">
+<span class="sig-prename descclassname"><span class="pre">config.</span></span><span class="sig-name descname"><span class="pre">backend</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#config.backend" title="Permalink to this definition"></a></dt>
+<dd><p>Proxy to an instance of <a class="reference internal" href="#config.Backend" title="config.Backend"><code class="xref py py-class docutils literal notranslate"><span class="pre">Backend</span></code></a>
+May only be used in parts of the code that are backend code.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="config.common">
+<span class="sig-prename descclassname"><span class="pre">config.</span></span><span class="sig-name descname"><span class="pre">common</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#config.common" title="Permalink to this definition"></a></dt>
+<dd><p>Proxy to an instance of <a class="reference internal" href="#config.Common" title="config.Common"><code class="xref py py-class docutils literal notranslate"><span class="pre">Common</span></code></a>
+May only be used in parts of the code that are neither frontend nor backend code.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="config.frontend">
+<span class="sig-prename descclassname"><span class="pre">config.</span></span><span class="sig-name descname"><span class="pre">frontend</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#config.frontend" title="Permalink to this definition"></a></dt>
+<dd><p>Proxy to an instance of <a class="reference internal" href="#config.Frontend" title="config.Frontend"><code class="xref py py-class docutils literal notranslate"><span class="pre">Frontend</span></code></a>
+May only be used in parts of the code that are frontend code.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="config.load">
+<span class="sig-prename descclassname"><span class="pre">config.</span></span><span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#config.load" title="Permalink to this definition"></a></dt>
+<dd><p>Load the config file located at <code class="docutils literal notranslate"><span class="pre">path</span></code>.
+The file must be a toml file and is read into instances of <a class="reference internal" href="#config.Backend" title="config.Backend"><code class="xref py py-class docutils literal notranslate"><span class="pre">Backend</span></code></a>,
+<a class="reference internal" href="#config.Frontend" title="config.Frontend"><code class="xref py py-class docutils literal notranslate"><span class="pre">Frontend</span></code></a> and <a class="reference internal" href="#config.Common" title="config.Common"><code class="xref py py-class docutils literal notranslate"><span class="pre">Common</span></code></a>.</p>
+<p>These instances can be accessed via <code class="docutils literal notranslate"><span class="pre">config.backend</span></code> after calling this function.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>This function may not be imported by <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">config</span> <span class="pre">import</span> <span class="pre">load</span></code>.
+It may only be imported by <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">config</span></code> and then used by <code class="docutils literal notranslate"><span class="pre">config.load()</span></code>.
+The reason is that testing code can’t patch this function if it was already imported.
+When you only import the <code class="docutils literal notranslate"><span class="pre">config</span></code> module the <code class="docutils literal notranslate"><span class="pre">load</span></code> function will be looked up at runtime.
+See <a class="reference external" href="https://alexmarandon.com/articles/python_mock_gotchas/">this blog entry</a> for some more information.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em><em> | </em><em>None</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="analysis.plugin.plugin.html" class="btn btn-neutral float-left" title="analysis.plugin.plugin" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="conftest.html" class="btn btn-neutral float-right" title="conftest" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020-2023  Fraunhofer FKIE.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
